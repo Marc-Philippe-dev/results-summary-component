@@ -1,0 +1,231 @@
+/*===== Including Font ====== */
+
+@font-face {
+  font-family: "HankenGrotesk";
+  font-display: swap;
+  font-weight: 100 900;
+  src: url("assets/fonts/HankenGrotesk-VariableFont_wght.ttf")
+    format("truetype");
+}
+
+/*===== Variables Declaration ====== */
+
+$clr-primary-red: hsl(0, 100%, 67);
+$clr-primary-orangey-yellow: hsl(39, 100%, 56%);
+$clr-primary-green-teal: hsl(166, 100%, 37%);
+$clr-primary-cobalt-blue: hsl(234, 85%, 45%);
+
+$bg-light-slate-blue: hsl(252, 100%, 67%);
+$bg-light-royal-blue: hsl(241, 81%, 54%);
+
+$bg-violet-blue: hsla(256, 72%, 46%, 1);
+$bg-persian-blue: hsla(241, 72%, 46%, 0);
+
+$clr-neutral-white: hsl(0, 0%, 100%);
+$clr-neutral-pale: hsl(221, 100%, 96%);
+$clr-neutral-light: hsl(241, 100%, 89%);
+$clr-neutral-dark: hsl(224, 30%, 27%);
+
+$font-family-default: "HankenGrotesk", sans-serif;
+
+$fs-400: 18px;
+
+$fw-500: 500;
+$fw-700: 700;
+$fw-800: 800;
+
+:root {
+  --clr-primary-hsl-400: 252, 100%, 67%;
+  --clr-primary-hsl-500: 256, 72%, 46%;
+  --clr-secondary-hsl-400: 241, 81%, 54%;
+  --clr-secondary-hsl-500: 241, 72%, 46%;
+
+  --clr-accent-1: 0, 100%, 67%;
+  --clr-accent-2: 39, 100%, 56%;
+  --clr-accent-3: 166, 100%, 37%;
+  --clr-accent-4: 234, 85%, 45%;
+
+  --clr-primary-400: hsl(var(--clr-primary-hsl-400));
+  --clr-primary-500: hsla(var(--clr-primary-hsl-500));
+  --clr-secondary-400: hsl(var(--clr-secondary-hsl-400));
+
+  --gradient-primary: linear-gradient(
+    var(--clr-primary-400),
+    var(--clr-secondary-400)
+  );
+
+  --gradient-to-transparent: linear-gradient(
+    var(--clr-primary-500),
+    hsl(var(--clr-secondary-hsl-500), 0)
+  );
+}
+
+/*===== CSS Reset ====== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  font: inherit;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+body {
+  font-family: $font-family-default;
+  font-size: $fs-400;
+}
+
+p {
+  font-weight: 400;
+}
+
+@media screen and (min-width: 600px) {
+  body {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+  }
+}
+
+.grid-flow {
+  display: grid;
+  align-content: start;
+  gap: 0.875rem;
+}
+
+.grid-flow[data-spacing="large"] {
+  gap: 2rem;
+}
+
+.flex-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.button {
+  color: $clr-neutral-white;
+  line-height: 1;
+  background: $clr-neutral-dark;
+  padding: 1rem 2rem;
+  border: 0;
+  border-radius: 100vw;
+  cursor: pointer;
+  text-align: center;
+}
+
+.button:hover,
+.button:focus-visible {
+  background: $bg-light-slate-blue;
+}
+
+.result {
+  background: var(--gradient-primary);
+  border-radius: 0rem 0rem 2rem 2rem;
+  padding-inline: 1rem;
+  padding-block: 1.5rem;
+  text-align: center;
+  color: $clr-neutral-pale;
+}
+
+.result-score {
+  display: grid;
+  place-content: center;
+  width: 10rem;
+  margin-inline: auto;
+  background: var(--gradient-to-transparent);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  color: $clr-neutral-light;
+
+  font-size: 14px;
+}
+
+.result-score span {
+  display: block;
+  font-size: 3.25rem;
+  font-weight: 900;
+  line-height: 1.35;
+  color: $clr-neutral-pale;
+}
+
+.result-grade {
+  font-size: 1.285rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.result-comment {
+  padding-inline: 2rem;
+  padding-bottom: 0.35rem;
+  color: $clr-neutral-light;
+  font-size: 1rem;
+}
+
+.summary {
+  padding-inline: 2rem;
+  padding-block: 1.5rem;
+}
+
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  background-color: hsl(var(--item-color), 0.1);
+}
+
+.summary-item svg {
+  stroke: hsl(var(--item-color));
+}
+
+.summary-item-title {
+  color: hsl(var(--item-color));
+  font-weight: 700;
+}
+
+.summary-item[data-item-type="accent-1"] {
+  --item-color: var(--clr-accent-1);
+}
+.summary-item[data-item-type="accent-2"] {
+  --item-color: var(--clr-accent-2);
+}
+.summary-item[data-item-type="accent-3"] {
+  --item-color: var(--clr-accent-3);
+}
+.summary-item[data-item-type="accent-4"] {
+  --item-color: var(--clr-accent-4);
+}
+
+.summary-score {
+  color: $clr-neutral-light;
+}
+
+.summary-score span {
+  color: $clr-neutral-dark;
+  font-weight: 700;
+}
+
+@media screen and (min-width: 600px) {
+  .results-summary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-inline: 1rem;
+    grid-template-columns: 1fr 1fr;
+    border-radius: 2rem;
+    overflow: hidden;
+    box-shadow: 0.5rem 1rem 3rem $clr-neutral-light;
+    max-width: 40rem;
+  }
+}
